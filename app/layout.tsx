@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CodeMorph",
-  description: "A light weight syntax convertor",
-  verification: {
-    google: "xkla1WnOFno1GH9SXQ7DT5in9xXEPZMyzZCGhqk6Vcg"
-  }
+  title: "KeyTace - Minimal Typing Test App",
+  description: "A minimal typing test app.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

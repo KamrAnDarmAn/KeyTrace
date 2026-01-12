@@ -1003,12 +1003,16 @@ export const easyModeWords = [
 
 // MID MODE: each entry has at least one DOT and at least one CAPITAL letter, no spaces around dots
 export const midModeWords = [
-  "Hello.World",
+  "Hello.",
+  "world",
   "Dr.Smith",
   "Test.Case",
-  "Node.JS",
-  "Good.Morning",
-  "This.IsFun",
+  "Test",
+  "Case.",
+  "Node.JS,",
+  "Morning",
+  "Good",
+  "IsFun.",
   "Stack.Overflow",
   "Version.2",
   "Pre.Vue",

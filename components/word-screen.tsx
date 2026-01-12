@@ -6,7 +6,7 @@ import Result from './result'
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from './ui/select'
 
 
-const VISIBLE_WORD_COUNT = 50
+const VISIBLE_WORD_COUNT = 30
 /*
 Improvements:
 - support multi-level tests (easy, mid, hard)
@@ -39,7 +39,7 @@ const getListByMode = (mode: 'easy' | 'mid' | 'hard') => {
 
 const WordScreen = () => {
     const [keys, setKeys] = useState<string[]>([])
-    const [testSeconds, setTestSeconds] = useState('10')
+    const [testSeconds, setTestSeconds] = useState('30')
     const TEST_SECONDS = +testSeconds
     const [mode, setMode] = useState<'easy' | 'mid' | 'hard'>('easy')
     const [currentInput, setCurrentInput] = useState('')
@@ -205,7 +205,7 @@ const WordScreen = () => {
 
 
     return (
-        <div className="flex flex-col min-h-screen items-center justify-center p-6 bg-linear-to-b from-slate-900 to-slate-800">
+        <div className="flex flex-col min-h-screen items-center w-full justify-center p-6 bg-linear-to-b from-slate-900 to-slate-800">
             <div className="w-full max-w-4xl bg-slate-900/60 backdrop-blur rounded-2xl shadow-xl p-6 space-y-6">
                 {/* Toolbar */}
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -266,7 +266,7 @@ const WordScreen = () => {
                 </div>
 
                 {/* Card: typing area */}
-                <div className="rounded-lg bg-linear-to-br from-slate-800/60 to-slate-900/40 p-5 relative">
+                <div className="rounded-lg bg-linear-to-br  from-slate-800/60 to-slate-900/40 p-5 relative">
                     {/* small progress bar */}
                     <div className="h-2 bg-slate-700 rounded-full overflow-hidden mb-4">
                         <div
@@ -295,7 +295,8 @@ const WordScreen = () => {
                     <div
                         ref={wordsContainerRef}
                         onClick={() => textareaRef.current?.focus()}
-                        className="flex flex-wrap gap-3 z-0 h-64 overflow-auto items-start py-2 px-1"
+                        // className="flex flex-wrap gap-3 z-0 h-64 overflow-auto items-start py-2 px-1"
+                        className="flex flex-wrap gap-3 z-0  overflow-auto items-start py-2 px-1"
                     >
                         {keys.map((word, i) => {
                             const isCurrent = i === currentWordIndex
@@ -306,14 +307,14 @@ const WordScreen = () => {
                                     <span
                                         key={i}
                                         data-word-index={i}
-                                        className="inline-flex items-center mr-2 font-semibold rounded-md bg-slate-800/50 px-2 py-1 ring-1 ring-slate-700 truncate max-w-48 whitespace-nowrap overflow-hidden"
+                                        className="inline-flex items-center mr-2 font-semibold  rounded-md bg-slate-800/50 px-2 py-1 ring-1 ring-slate-700 truncate max-w-48 whitespace-nowrap overflow-hidden"
                                     >
                                         {Array.from(word).map((ch, idx) => {
                                             const typedChar = currentInput[idx]
                                             const isTyped = typeof typedChar !== 'undefined'
                                             const correct = isTyped && typedChar === ch
                                             const wrong = isTyped && typedChar !== ch
-                                            const classes = correct ? 'text-emerald-400' : wrong ? 'text-red-400' : 'text-slate-400'
+                                            const classes = correct ? 'text-emerald-600' : wrong ? 'text-red-400' : 'text-slate-400'
                                             return (
                                                 <span key={idx} className={`mx-px text-sm ${classes}`}>
                                                     {ch}
@@ -321,7 +322,7 @@ const WordScreen = () => {
                                             )
                                         })}
                                         {/* blinking caret */}
-                                        <span className="inline-block w-px h-5 bg-current ml-2 -mb-1 animate-pulse" />
+                                        <span className="inline-block w-px h-4 bg-current ml-2 mb-0.5 animate-pulse" />
                                     </span>
                                 )
                             }
